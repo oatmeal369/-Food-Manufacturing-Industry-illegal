@@ -9,14 +9,7 @@ export const dynamic = "force-dynamic";
 type I0480Row = Record<string, unknown>;
 
 export async function GET() {
-  const apiKey = process.env.FOOD_API_KEY;
-
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "FOOD_API_KEY 환경변수가 설정되지 않았습니다." },
-      { status: 500 }
-    );
-  }
+  const apiKey = process.env.FOOD_API_KEY || "sample";
 
   try {
     const firstPage = await fetchI0480(apiKey, 1, PAGE_SIZE);
@@ -32,6 +25,7 @@ export async function GET() {
     return NextResponse.json({
       total_count: totalCount,
       fetched_count: rows.length,
+      source: apiKey === "sample" ? "sample" : "openapi",
       cases: rows.map(rowToCase)
     });
   } catch (error) {

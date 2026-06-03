@@ -104,7 +104,7 @@ export default function Page() {
         <h1>식품제조가공업 행정처분 검색</h1>
         <p className="hero-description">
           식품유형, 처분종류, 검색어를 조합해 경쟁 제품군의 행정처분 사례와 위반 원인을 빠르게 확인할 수 있습니다.
-          현재는 샘플 정적 데이터로 동작하며, 데이터 로더만 교체하면 내부 API 연동으로 확장할 수 있습니다.
+          FOOD_API_KEY가 없으면 공개 샘플 API로 동작하고, Vercel 환경변수를 등록하면 실제 I0480 OpenAPI 데이터로 전환됩니다.
         </p>
         <div className="summary-grid">
           <div className="summary-card">
@@ -188,8 +188,8 @@ export default function Page() {
       </section>
 
       <p className="footer-note">
-        실제 운영에서는 Vercel Environment Variables에 FOOD_API_KEY를 등록하고, 프론트는 식품안전나라를 직접 호출하지 않고
-        /api/food-manufacturing 내부 API만 호출하도록 전환하면 됩니다.
+        실제 운영에서는 Vercel Environment Variables에 FOOD_API_KEY를 등록하세요. 프론트는 식품안전나라를 직접 호출하지 않고
+        /api/food-manufacturing 내부 API만 호출합니다.
       </p>
     </main>
   );
